@@ -1,6 +1,6 @@
-web:
+webcomponents:
   image: wadmiraal/drupal
   ports:
-   - "8080:80"
+   - "8081:80"
   volumes:
-   - ../package/modules:/var/www/sites/all/modules
+   - ../package/html:/var/www

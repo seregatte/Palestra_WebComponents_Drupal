@@ -1,0 +1,54 @@
+<html>
+<head>
+	<script type="text/javascript">
+		var XFooButtonPrototype = Object.create(HTMLButtonElement.prototype);
+
+		XFooButtonPrototype.createdCallback = function() {
+			var root = this.createShadowRoot();
+			var template = document.querySelector('#x-homer-button-tpl');
+			var clone = document.importNode(template.content, true);
+			root.appendChild(clone);
+
+			this.addEventListener('click', function(e) {
+				root.querySelector('audio').play()
+			});
+		};
+
+		var XFooButton = document.registerElement('x-homer-button', {
+			prototype: XFooButtonPrototype,
+			extends: 'button'
+		});
+		
+	</script>
+	<template id="x-homer-button-tpl">
+	  <style type="text/css">
+	  img{
+	  	width: 20px;
+	  	padding: 2px;
+	  	float: left;
+	  }
+	  i{
+	  	float: left;
+	  	padding: 10px 5px;
+	  }
+	  </style>
+	  <img src="http://i947.photobucket.com/albums/ad312/NT-Graphics/homer.png">
+	  <i>Homer</i>
+	  <audio><source src="http://www.richmolnar.com/Sounds/Homer%20-%20D'oh!%20(2).wav" type="audio/wav"></audio>
+	</template>
+	<style type="text/css">
+		i{
+			color: red;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<p>
+		<i>Externo</i>
+	</p>
+	<p>
+		<button is="x-homer-button"></button>
+	</p>
+</body>
+</html>

@@ -15,4 +15,4 @@ destroy:
 	cd docker && docker-compose stop && docker-compose rm -f
 
 ssh:
-	docker exec -it docker_web_1 /bin/bash
+	docker exec -it docker_webcomponents_1 /bin/bash
